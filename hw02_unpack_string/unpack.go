@@ -19,7 +19,7 @@ func Unpack(s string) (string, error) {
 				continue
 			}
 		}
-		
+
 		if err == nil {
 			if i == 0 {
 				return "", ErrInvalidString
