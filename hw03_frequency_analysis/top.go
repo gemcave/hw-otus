@@ -13,9 +13,9 @@ func Top10(input string) []string {
 	words := strings.Fields(input)
 	wordCounts := countWords(words)
 
-	var wordsList  []string
+	var wordsList []string
 	for word := range wordCounts {
-		wordsList  = append(wordsList , word)
+		wordsList = append(wordsList, word)
 	}
 
 	sort.Slice(wordsList, func(i, j int) bool {
