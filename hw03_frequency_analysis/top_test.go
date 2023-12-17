@@ -43,7 +43,7 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
-var text_eng = `
+var textEng  = `
 	A half hour later, it happened. At a place where the snow seemed very solid, 
 	the ice broke. The man’s feet sank into the water. It was not deep, but his legs
 	got wet to the knees. The man was angry. The accident would delay his arrival 
@@ -111,6 +111,6 @@ func TestTop10(t *testing.T) {
 			"a",   // 4
 			"he",  // 4
 		}
-		require.Equal(t, expected, Top10(text_eng))
+		require.Equal(t, expected, Top10(textEng))
 	})
 }
