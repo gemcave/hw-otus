@@ -22,10 +22,10 @@ func Top10(input string) []string {
 		return wordCounts[wordsList[i]] > wordCounts[wordsList[j]] ||
 			(wordCounts[wordsList[i]] == wordCounts[wordsList[j]] && wordsList[i] < wordsList[j])
 	})
-	
+
 	resultLength := 10
 	if len(wordsList) < 10 {
-		resultLength = len(wordsList) 
+		resultLength = len(wordsList)
 	}
 
 	result := make([]string, resultLength)
