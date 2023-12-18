@@ -43,6 +43,23 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
+var textEng = `A half hour later, it happened. At a place where the snow seemed very solid, 
+	the ice broke. The man’s feet sank into the water. It was not deep, but his legs
+	got wet to the knees. The man was angry. The accident would delay his arrival 
+	at the camp. He would have to build a fire now to dry his clothes and boots. 
+	He walked over to some small trees. They were covered with snow. 
+	In their branches were pieces of dry grass and wood left by flood waters earlier in 
+	the year. He put several large pieces of wood on the snow, under one of the trees. 
+	On top of the wood, he put some grass and dry branches. He pulled off his gloves, 
+	took out his matches, and lighted the fire. He fed the young flame with more wood. 
+	As the fire grew , he gave it larger pieces of wood. He worked slowly and carefully. 
+	At sixty degrees below zero, a man with wet feet must not fail in his first attempt 
+	to build a fire. While he was walking, his blood had kept all parts of his body warm. 
+	Now that he had stopped, cold was forcing his blood to withdraw deeper into his body. 
+	His wet feet had frozen. He could not feel his fingers. His nose was frozen, too. 
+	The skin all over his body felt cold.
+`
+
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
 		require.Len(t, Top10(""), 0)
@@ -55,7 +72,7 @@ func TestTop10(t *testing.T) {
 				"он",        // 8
 				"и",         // 6
 				"ты",        // 5
-				"что",       // 5
+				"что",       // 5E
 				"в",         // 4
 				"его",       // 4
 				"если",      // 4
@@ -78,5 +95,21 @@ func TestTop10(t *testing.T) {
 			}
 			require.Equal(t, expected, Top10(text))
 		}
+	})
+
+	t.Run("with english text", func(t *testing.T) {
+		expected := []string{
+			"his", // 12
+			"the", // 12
+			"He",  // 7
+			"of",  // 6
+			"to",  // 6
+			"and", // 5
+			"was", // 5
+			"The", // 4
+			"a",   // 4
+			"he",  // 4
+		}
+		require.Equal(t, expected, Top10(textEng))
 	})
 }
