@@ -1,6 +1,7 @@
 package hw04lrucache
 
 import (
+	"strconv"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -18,9 +19,9 @@ func TestList(t *testing.T) {
 	t.Run("complex", func(t *testing.T) {
 		l := NewList()
 
-		l.PushFront(10) // [10]
-		l.PushBack(20)  // [10, 20]
-		l.PushBack(30)  // [10, 20, 30]
+		l.PushFront("10", 10) // [10]
+		l.PushBack("20", 20)  // [10, 20]
+		l.PushBack("30", 30)  // [10, 20, 30]
 		require.Equal(t, 3, l.Len())
 
 		middle := l.Front().Next // 20
@@ -29,9 +30,9 @@ func TestList(t *testing.T) {
 
 		for i, v := range [...]int{40, 50, 60, 70, 80} {
 			if i%2 == 0 {
-				l.PushFront(v)
+				l.PushFront(Key(strconv.Itoa(v)), v)
 			} else {
-				l.PushBack(v)
+				l.PushBack(Key(strconv.Itoa(v)), v)
 			}
 		} // [80, 60, 40, 10, 30, 50, 70]
 
