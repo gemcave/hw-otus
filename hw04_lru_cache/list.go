@@ -4,14 +4,13 @@ type List interface {
 	Len() int
 	Front() *ListItem
 	Back() *ListItem
-	PushFront(Key Key, v interface{}) *ListItem
-	PushBack(Key Key, v interface{}) *ListItem
+	PushFront(v interface{}) *ListItem
+	PushBack(v interface{}) *ListItem
 	Remove(i *ListItem)
 	MoveToFront(i *ListItem)
 }
 
 type ListItem struct {
-	Key   Key
 	Value interface{}
 	Next  *ListItem
 	Prev  *ListItem
@@ -35,8 +34,8 @@ func (list *list) Back() *ListItem {
 	return list.last
 }
 
-func (list *list) PushFront(key Key, v interface{}) *ListItem {
-	newItem := &ListItem{Key: key, Value: v}
+func (list *list) PushFront(v interface{}) *ListItem {
+	newItem := &ListItem{Value: v}
 
 	if list.Len() == 0 {
 		list.first = newItem
@@ -50,8 +49,8 @@ func (list *list) PushFront(key Key, v interface{}) *ListItem {
 	return newItem
 }
 
-func (list *list) PushBack(key Key, v interface{}) *ListItem {
-	newItem := &ListItem{Key: key, Value: v}
+func (list *list) PushBack(v interface{}) *ListItem {
+	newItem := &ListItem{Value: v}
 
 	if list.Len() == 0 {
 		list.first = newItem
