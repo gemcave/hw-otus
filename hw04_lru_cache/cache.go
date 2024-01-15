@@ -29,8 +29,8 @@ func (cache *lruCache) Set(key Key, value interface{}) bool {
 	}
 
 	newCacheItem := &cacheItem{key, value}
-	li := cache.queue.PushFront(newCacheItem)
-	if cache.queue.Len() > cache.capacity {
+
+	if cache.queue.Len() == cache.capacity {
 		back := cache.queue.Back()
 		backCacheItem := back.Value.(*cacheItem)
 
@@ -38,7 +38,9 @@ func (cache *lruCache) Set(key Key, value interface{}) bool {
 		delete(cache.items, backCacheItem.key)
 	}
 
+	li := cache.queue.PushFront(newCacheItem)
 	cache.items[key] = li
+
 	return false
 }
 
